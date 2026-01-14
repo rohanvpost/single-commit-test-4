@@ -1,0 +1,901 @@
+{
+  "info": {
+    "_postman_id": "247a8cfd-8219-49e7-b24b-e5a82ea87e4a",
+    "name": "Accounts API",
+    "description": "The Accounts API provides comprehensive access to customer bank accounts, enabling \nretrieval of account details, balances, and account management operations.\n\n## Features\n- Retrieve account details and balances\n- List all accounts for a customer\n- Get account holder information\n- Support for checking, savings, and money market accounts\n\n## Authentication\nAll endpoints require OAuth 2.0 Bearer token authentication.\n\n\nContact Support:\n Name: Banking API Support\n Email: api-support@acmefinancial.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-01-14T22:54:11.000Z",
+    "updatedAt": "2026-01-14T22:54:12.000Z",
+    "lastUpdatedBy": "49447415",
+    "uid": "49447415-247a8cfd-8219-49e7-b24b-e5a82ea87e4a"
+  },
+  "item": [
+    {
+      "name": "accounts",
+      "item": [
+        {
+          "name": "{accountId}",
+          "item": [
+            {
+              "name": "balance",
+              "item": [
+                {
+                  "name": "Get account balance",
+                  "id": "4f0ef48a-e493-4536-b8f7-fcdd0e2d8008",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "auth": {
+                      "type": "bearer",
+                      "bearer": [
+                        {
+                          "key": "token",
+                          "value": "{{bearerToken}}",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/accounts/:accountId/balance",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "accounts",
+                        ":accountId",
+                        "balance"
+                      ],
+                      "variable": [
+                        {
+                          "id": "a3c31018-f5ae-4926-81bb-709c0a5e6899",
+                          "key": "accountId",
+                          "value": "ZK37599976094900",
+                          "description": "(Required) Unique account identifier"
+                        }
+                      ]
+                    },
+                    "description": "Retrieve current and available balance for an account"
+                  },
+                  "response": [
+                    {
+                      "id": "8ea32f76-beca-4ae1-8648-157d9d9ee6c2",
+                      "name": "Successful response",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/accounts/:accountId/balance",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "accounts",
+                            ":accountId",
+                            "balance"
+                          ],
+                          "variable": [
+                            {
+                              "key": "accountId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"current\": \"<number>\",\n  \"available\": \"<number>\",\n  \"pending\": \"<number>\",\n  \"currency\": \"<string>\",\n  \"asOf\": \"<dateTime>\"\n}",
+                      "createdAt": "2026-01-14T22:54:12.000Z",
+                      "updatedAt": "2026-01-14T22:54:12.000Z",
+                      "uid": "49447415-8ea32f76-beca-4ae1-8648-157d9d9ee6c2"
+                    },
+                    {
+                      "id": "035e5e67-0ce1-4bbe-b770-c198d7bd071e",
+                      "name": "Authentication required",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/accounts/:accountId/balance",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "accounts",
+                            ":accountId",
+                            "balance"
+                          ],
+                          "variable": [
+                            {
+                              "key": "accountId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"code\": \"<string>\",\n  \"message\": \"<string>\",\n  \"details\": [\n    {\n      \"field\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"field\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-01-14T22:54:12.000Z",
+                      "updatedAt": "2026-01-14T22:54:12.000Z",
+                      "uid": "49447415-035e5e67-0ce1-4bbe-b770-c198d7bd071e"
+                    },
+                    {
+                      "id": "739f67e4-0724-48bb-bdee-509103818b5e",
+                      "name": "Resource not found",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/accounts/:accountId/balance",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "accounts",
+                            ":accountId",
+                            "balance"
+                          ],
+                          "variable": [
+                            {
+                              "key": "accountId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"code\": \"<string>\",\n  \"message\": \"<string>\",\n  \"details\": [\n    {\n      \"field\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"field\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-01-14T22:54:12.000Z",
+                      "updatedAt": "2026-01-14T22:54:12.000Z",
+                      "uid": "49447415-739f67e4-0724-48bb-bdee-509103818b5e"
+                    }
+                  ],
+                  "createdAt": "2026-01-14T22:54:12.000Z",
+                  "updatedAt": "2026-01-14T22:54:12.000Z",
+                  "uid": "49447415-4f0ef48a-e493-4536-b8f7-fcdd0e2d8008"
+                }
+              ],
+              "id": "7b1b1206-e7cf-4c32-82cd-714a69c23099",
+              "createdAt": "2026-01-14T22:54:12.000Z",
+              "updatedAt": "2026-01-14T22:54:12.000Z",
+              "uid": "49447415-7b1b1206-e7cf-4c32-82cd-714a69c23099"
+            },
+            {
+              "name": "holder",
+              "item": [
+                {
+                  "name": "Get account holder information",
+                  "id": "7cd9ff36-de9e-4c58-b14c-66d28c82dd6c",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "auth": {
+                      "type": "bearer",
+                      "bearer": [
+                        {
+                          "key": "token",
+                          "value": "{{bearerToken}}",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/accounts/:accountId/holder",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "accounts",
+                        ":accountId",
+                        "holder"
+                      ],
+                      "variable": [
+                        {
+                          "id": "7ccef852-db5a-459c-b85f-00c5cf27deb0",
+                          "key": "accountId",
+                          "value": "ZK37599976094900",
+                          "description": "(Required) Unique account identifier"
+                        }
+                      ]
+                    },
+                    "description": "Retrieve account holder details including contact information"
+                  },
+                  "response": [
+                    {
+                      "id": "d568954f-d319-413e-baa3-dc2b8e6dc22a",
+                      "name": "Successful response",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/accounts/:accountId/holder",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "accounts",
+                            ":accountId",
+                            "holder"
+                          ],
+                          "variable": [
+                            {
+                              "key": "accountId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"holderId\": \"<string>\",\n  \"name\": {\n    \"first\": \"<string>\",\n    \"middle\": \"<string>\",\n    \"last\": \"<string>\"\n  },\n  \"email\": \"<email>\",\n  \"phone\": \"<string>\",\n  \"address\": {\n    \"line1\": \"<string>\",\n    \"line2\": \"<string>\",\n    \"city\": \"<string>\",\n    \"state\": \"<string>\",\n    \"postalCode\": \"<string>\",\n    \"country\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-01-14T22:54:12.000Z",
+                      "updatedAt": "2026-01-14T22:54:12.000Z",
+                      "uid": "49447415-d568954f-d319-413e-baa3-dc2b8e6dc22a"
+                    },
+                    {
+                      "id": "ac3a7eb7-82f9-4c95-a3f8-a7bb4092da10",
+                      "name": "Authentication required",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/accounts/:accountId/holder",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "accounts",
+                            ":accountId",
+                            "holder"
+                          ],
+                          "variable": [
+                            {
+                              "key": "accountId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"code\": \"<string>\",\n  \"message\": \"<string>\",\n  \"details\": [\n    {\n      \"field\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"field\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-01-14T22:54:12.000Z",
+                      "updatedAt": "2026-01-14T22:54:12.000Z",
+                      "uid": "49447415-ac3a7eb7-82f9-4c95-a3f8-a7bb4092da10"
+                    },
+                    {
+                      "id": "02dbd90f-f3e8-417a-8d7c-ee064f56f7ff",
+                      "name": "Resource not found",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/accounts/:accountId/holder",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "accounts",
+                            ":accountId",
+                            "holder"
+                          ],
+                          "variable": [
+                            {
+                              "key": "accountId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"code\": \"<string>\",\n  \"message\": \"<string>\",\n  \"details\": [\n    {\n      \"field\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"field\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-01-14T22:54:12.000Z",
+                      "updatedAt": "2026-01-14T22:54:12.000Z",
+                      "uid": "49447415-02dbd90f-f3e8-417a-8d7c-ee064f56f7ff"
+                    }
+                  ],
+                  "createdAt": "2026-01-14T22:54:12.000Z",
+                  "updatedAt": "2026-01-14T22:54:12.000Z",
+                  "uid": "49447415-7cd9ff36-de9e-4c58-b14c-66d28c82dd6c"
+                }
+              ],
+              "id": "b8f7cb70-8088-4b1f-9c28-90590edc759b",
+              "createdAt": "2026-01-14T22:54:12.000Z",
+              "updatedAt": "2026-01-14T22:54:12.000Z",
+              "uid": "49447415-b8f7cb70-8088-4b1f-9c28-90590edc759b"
+            },
+            {
+              "name": "Get account details",
+              "id": "19dd0ac5-f2a0-49f4-b50c-e66559dcdf26",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{bearerToken}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/accounts/:accountId",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "accounts",
+                    ":accountId"
+                  ],
+                  "variable": [
+                    {
+                      "id": "4a2b078c-c9fb-4e73-9912-216d41b84d19",
+                      "key": "accountId",
+                      "value": "ZK37599976094900",
+                      "description": "(Required) Unique account identifier"
+                    }
+                  ]
+                },
+                "description": "Retrieve detailed information for a specific account"
+              },
+              "response": [
+                {
+                  "id": "593b5176-9a59-4dd4-a2d2-43bc82cf998c",
+                  "name": "Successful response",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/accounts/:accountId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "accounts",
+                        ":accountId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "accountId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"accountId\": \"<string>\",\n  \"accountNumber\": \"<string>\",\n  \"routingNumber\": \"<string>\",\n  \"accountType\": \"checking\",\n  \"nickname\": \"<string>\",\n  \"currency\": \"<string>\",\n  \"status\": \"active\",\n  \"openedDate\": \"<date>\",\n  \"interestRate\": \"<float>\",\n  \"balance\": {\n    \"current\": \"<number>\",\n    \"available\": \"<number>\",\n    \"pending\": \"<number>\",\n    \"currency\": \"<string>\",\n    \"asOf\": \"<dateTime>\"\n  }\n}",
+                  "createdAt": "2026-01-14T22:54:12.000Z",
+                  "updatedAt": "2026-01-14T22:54:12.000Z",
+                  "uid": "49447415-593b5176-9a59-4dd4-a2d2-43bc82cf998c"
+                },
+                {
+                  "id": "b327c1e4-b984-4163-9bda-9bb299021be3",
+                  "name": "Authentication required",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/accounts/:accountId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "accounts",
+                        ":accountId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "accountId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"code\": \"<string>\",\n  \"message\": \"<string>\",\n  \"details\": [\n    {\n      \"field\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"field\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}",
+                  "createdAt": "2026-01-14T22:54:12.000Z",
+                  "updatedAt": "2026-01-14T22:54:12.000Z",
+                  "uid": "49447415-b327c1e4-b984-4163-9bda-9bb299021be3"
+                },
+                {
+                  "id": "142bd824-a99e-49da-a3ca-a0acf5420396",
+                  "name": "Resource not found",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/accounts/:accountId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "accounts",
+                        ":accountId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "accountId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"code\": \"<string>\",\n  \"message\": \"<string>\",\n  \"details\": [\n    {\n      \"field\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"field\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}",
+                  "createdAt": "2026-01-14T22:54:12.000Z",
+                  "updatedAt": "2026-01-14T22:54:12.000Z",
+                  "uid": "49447415-142bd824-a99e-49da-a3ca-a0acf5420396"
+                }
+              ],
+              "createdAt": "2026-01-14T22:54:12.000Z",
+              "updatedAt": "2026-01-14T22:54:12.000Z",
+              "uid": "49447415-19dd0ac5-f2a0-49f4-b50c-e66559dcdf26"
+            }
+          ],
+          "id": "0cdb53eb-38ec-4f1d-90a1-7ce823817b73",
+          "createdAt": "2026-01-14T22:54:12.000Z",
+          "updatedAt": "2026-01-14T22:54:12.000Z",
+          "uid": "49447415-0cdb53eb-38ec-4f1d-90a1-7ce823817b73"
+        },
+        {
+          "name": "List all accounts",
+          "id": "2dd83a4d-e958-470f-85ef-583342d3f586",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/accounts?accountType=money_market&status=closed&limit=20&offset=0",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "accounts"
+              ],
+              "query": [
+                {
+                  "description": "Filter by account type",
+                  "key": "accountType",
+                  "value": "money_market"
+                },
+                {
+                  "description": "Filter by account status",
+                  "key": "status",
+                  "value": "closed"
+                },
+                {
+                  "description": "Maximum number of accounts to return",
+                  "key": "limit",
+                  "value": "20"
+                },
+                {
+                  "description": "Number of accounts to skip",
+                  "key": "offset",
+                  "value": "0"
+                }
+              ]
+            },
+            "description": "Retrieve a list of all accounts for the authenticated customer"
+          },
+          "response": [
+            {
+              "id": "039fdd27-ed2b-4994-99ea-bbb37cd9c2b1",
+              "name": "Successful response",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/accounts?accountType=money_market&status=closed&limit=20&offset=0",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "accounts"
+                  ],
+                  "query": [
+                    {
+                      "description": "Filter by account type",
+                      "key": "accountType",
+                      "value": "money_market"
+                    },
+                    {
+                      "description": "Filter by account status",
+                      "key": "status",
+                      "value": "closed"
+                    },
+                    {
+                      "description": "Maximum number of accounts to return",
+                      "key": "limit",
+                      "value": "20"
+                    },
+                    {
+                      "description": "Number of accounts to skip",
+                      "key": "offset",
+                      "value": "0"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"data\": [\n    {\n      \"accountId\": \"<string>\",\n      \"accountType\": \"money_market\",\n      \"nickname\": \"<string>\",\n      \"currency\": \"<string>\",\n      \"status\": \"dormant\"\n    },\n    {\n      \"accountId\": \"<string>\",\n      \"accountType\": \"money_market\",\n      \"nickname\": \"<string>\",\n      \"currency\": \"<string>\",\n      \"status\": \"dormant\"\n    }\n  ],\n  \"pagination\": {\n    \"total\": \"<integer>\",\n    \"limit\": \"<integer>\",\n    \"offset\": \"<integer>\",\n    \"hasMore\": \"<boolean>\"\n  }\n}",
+              "createdAt": "2026-01-14T22:54:12.000Z",
+              "updatedAt": "2026-01-14T22:54:12.000Z",
+              "uid": "49447415-039fdd27-ed2b-4994-99ea-bbb37cd9c2b1"
+            },
+            {
+              "id": "cc4bd115-6b8a-43fb-8243-f01cc139b192",
+              "name": "Authentication required",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/accounts?accountType=money_market&status=closed&limit=20&offset=0",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "accounts"
+                  ],
+                  "query": [
+                    {
+                      "description": "Filter by account type",
+                      "key": "accountType",
+                      "value": "money_market"
+                    },
+                    {
+                      "description": "Filter by account status",
+                      "key": "status",
+                      "value": "closed"
+                    },
+                    {
+                      "description": "Maximum number of accounts to return",
+                      "key": "limit",
+                      "value": "20"
+                    },
+                    {
+                      "description": "Number of accounts to skip",
+                      "key": "offset",
+                      "value": "0"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"code\": \"<string>\",\n  \"message\": \"<string>\",\n  \"details\": [\n    {\n      \"field\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"field\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}",
+              "createdAt": "2026-01-14T22:54:12.000Z",
+              "updatedAt": "2026-01-14T22:54:12.000Z",
+              "uid": "49447415-cc4bd115-6b8a-43fb-8243-f01cc139b192"
+            },
+            {
+              "id": "bc2ec594-b774-42c2-9cc5-517a4532a1c7",
+              "name": "Insufficient permissions",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/accounts?accountType=money_market&status=closed&limit=20&offset=0",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "accounts"
+                  ],
+                  "query": [
+                    {
+                      "description": "Filter by account type",
+                      "key": "accountType",
+                      "value": "money_market"
+                    },
+                    {
+                      "description": "Filter by account status",
+                      "key": "status",
+                      "value": "closed"
+                    },
+                    {
+                      "description": "Maximum number of accounts to return",
+                      "key": "limit",
+                      "value": "20"
+                    },
+                    {
+                      "description": "Number of accounts to skip",
+                      "key": "offset",
+                      "value": "0"
+                    }
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"code\": \"<string>\",\n  \"message\": \"<string>\",\n  \"details\": [\n    {\n      \"field\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"field\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}",
+              "createdAt": "2026-01-14T22:54:12.000Z",
+              "updatedAt": "2026-01-14T22:54:12.000Z",
+              "uid": "49447415-bc2ec594-b774-42c2-9cc5-517a4532a1c7"
+            }
+          ],
+          "createdAt": "2026-01-14T22:54:12.000Z",
+          "updatedAt": "2026-01-14T22:54:12.000Z",
+          "uid": "49447415-2dd83a4d-e958-470f-85ef-583342d3f586"
+        }
+      ],
+      "id": "faf2b8cc-3130-4d09-9f83-a4dcb1611f95",
+      "createdAt": "2026-01-14T22:54:12.000Z",
+      "updatedAt": "2026-01-14T22:54:12.000Z",
+      "uid": "49447415-faf2b8cc-3130-4d09-9f83-a4dcb1611f95"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.acmefinancial.com"
+    }
+  ]
+}

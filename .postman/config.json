@@ -1,0 +1,22 @@
+{
+  "workspace": {
+    "id": "07eece4a-6e9c-47e0-97d3-d45552a88bfb"
+  },
+  "entities": {
+    "collections": [
+      "../postman/collections/acca.json"
+    ],
+    "environments": [
+      "../environments/acca---development.json",
+      "../environments/acca---staging.json",
+      "../environments/acca---production.json"
+    ],
+    "specs": [
+      "../postman/specs/acca.yaml"
+    ],
+    "flows": [],
+    "globals": [
+      "../postman/globals/workspace.postman_globals.json"
+    ]
+  }
+}
