@@ -1,18 +1,18 @@
 {
   "workspace": {
-    "id": "07eece4a-6e9c-47e0-97d3-d45552a88bfb"
+    "id": "2200d5cb-05b9-42c1-986d-1ecf4c8b6b5f"
   },
   "entities": {
     "collections": [
-      "../postman/collections/acca.json"
+      "../postman/collections/accounts-api.json"
     ],
     "environments": [
-      "../environments/acca---development.json",
-      "../environments/acca---staging.json",
-      "../environments/acca---production.json"
+      "../environments/accounts-api---development.json",
+      "../environments/accounts-api---staging.json",
+      "../environments/accounts-api---production.json"
     ],
     "specs": [
-      "../postman/specs/acca.yaml"
+      "../postman/specs/accounts-api.yaml"
     ],
     "flows": [],
     "globals": [
